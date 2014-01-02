@@ -1,3 +1,5 @@
-## Blank Heroku app
+## Rails sample application
 
-This is a empty Heroku application template. You can add files to this application once you have cloned it.
+This is the sample application for
+[*Ruby on Rails Tutorial: Learn Rails by Example*](http://railstutorial.org/)
+by [Michael Hartl](http://michaelhartl.com/).
