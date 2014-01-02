@@ -17,7 +17,7 @@ development:
   encoding: unicode
   database: jdd-sample-app_development
   pool: 5
-  username: jdd-sample-app
+  username: jd
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -43,7 +43,7 @@ test:
   encoding: unicode
   database: jdd-sample-app_test
   pool: 5
-  username: jdd-sample-app
+  username: jd
   password:
 
 production:
