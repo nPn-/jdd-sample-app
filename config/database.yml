@@ -51,5 +51,5 @@ production:
   encoding: unicode
   database: jdd-sample-app_production
   pool: 5
-  username: jdd-sample-app
+  username: jdd-sample-app 
   password:
