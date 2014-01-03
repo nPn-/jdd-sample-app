@@ -9,8 +9,15 @@ gem 'bootstrap-sass', '2.1'
 
 gem 'pg'
 
+group :development do
+  gem 'annotate', '2.5.0'
+
+end
+
+
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
+  gem 'bcrypt-ruby', '3.1.2'
 end
 
 # Gems used only for assets and not required
@@ -45,5 +52,9 @@ end
 
 # To use debugger
 # gem 'debugger'
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+  #gem 'bcrypt-ruby', '3.0.1'  
+end
+
 ruby '2.0.0'
