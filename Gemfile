@@ -17,7 +17,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
-  gem 'bcrypt-ruby', '3.1.2'
+  #gem 'bcrypt-ruby', '3.1.2'
 end
 
 # Gems used only for assets and not required
@@ -54,7 +54,7 @@ end
 # gem 'debugger'
 group :production do
   gem 'rails_12factor'
-  #gem 'bcrypt-ruby', '3.0.1'  
+  gem 'bcrypt-ruby', '3.0.1'  
 end
 
 ruby '2.0.0'
