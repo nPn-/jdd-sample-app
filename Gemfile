@@ -14,6 +14,7 @@ group :development do
 
 end
 
+gem 'bcrypt-ruby', '3.1.2'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
@@ -54,7 +55,7 @@ end
 # gem 'debugger'
 group :production do
   gem 'rails_12factor'
-  gem 'bcrypt-ruby', '3.0.1'  
+  #gem 'bcrypt-ruby', '3.0.1'  
 end
 
 ruby '2.0.0'
