@@ -8,7 +8,7 @@ module ActiveModel
         # Load bcrypt-ruby only when has_secure_password is used.
         # This is to avoid ActiveModel (and by extension the entire framework) being dependent on a binary library.
         #gem 'bcrypt-ruby', '~> 3.0.0'
-        gem 'bcrypt-ruby', '~> 3.1.0'
+        gem 'bcrypt-ruby', '3.1.2'
         require 'bcrypt'
 
         attr_reader :password
