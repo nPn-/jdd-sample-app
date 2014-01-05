@@ -14,11 +14,17 @@ group :development do
 
 end
 
+group :test do
+  gem 'capybara', '1.1.2'
+#  gem 'factory_girl_rails', '4.1.0'
+end
+
 gem 'bcrypt-ruby', '3.1.2'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   #gem 'bcrypt-ruby', '3.1.2'
+  gem 'factory_girl_rails', '4.1.0'
 end
 
 # Gems used only for assets and not required
@@ -35,9 +41,7 @@ end
 
 gem 'jquery-rails'
 
-group :test do
-  gem 'capybara', '1.1.2'
-end
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
