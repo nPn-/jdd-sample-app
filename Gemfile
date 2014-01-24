@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.16'
-
+gem 'bcrypt-ruby', '3.1.2'
 gem 'bootstrap-sass', '2.1'
+gem 'faker', '1.0.1'
+gem 'jquery-rails'
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -16,15 +20,17 @@ end
 
 group :test do
   gem 'capybara', '1.1.2'
-#  gem 'factory_girl_rails', '4.1.0'
+  gem 'factory_girl_rails', '4.1.0'
+  gem 'rspec-rails', '2.11.0'
 end
 
-gem 'bcrypt-ruby', '3.1.2'
+
 
 group :development, :test do
-  gem 'rspec-rails', '2.11.0'
+  gem 'debugger'
+#  gem 'rspec-rails', '2.11.0'
   #gem 'bcrypt-ruby', '3.1.2'
-  gem 'factory_girl_rails', '4.1.0'
+#  gem 'factory_girl_rails', '4.1.0'
 end
 
 # Gems used only for assets and not required
@@ -39,7 +45,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+
 
 
 
@@ -56,7 +62,7 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+
 group :production do
   gem 'rails_12factor'
   #gem 'bcrypt-ruby', '3.0.1'  
