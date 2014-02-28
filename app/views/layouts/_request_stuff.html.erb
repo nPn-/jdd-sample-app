@@ -1,0 +1,6 @@
+
+<ul>
+  <% [:request_method, :method, :url, :original_url, :request_parameters,:authorization,:ip, :media_type].each do |m| %>
+    <li> <%= "method #{m} = %s " % request.send(m) %> </li>
+  <% end %>
+</ul>
