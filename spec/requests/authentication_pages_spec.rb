@@ -10,26 +10,26 @@ describe "Authentication" do
     it { should have_selector('h1',    text: 'Sign in') }
     it { should have_selector('title', text: 'Sign in') }
   end
-  
+
   describe "signin" do
     before { visit signin_path }
 
     let(:invalid_user) {FactoryGirl.create(:user)}
     describe "with invalid information" do
-      before  do 
+      before  do
         invalid_user.email = ""
-        sign_in invalid_user 
+        sign_in invalid_user
       end
- 
+
       it { should have_selector('title', text: 'Sign in') }
       it { should have_selector('div.alert.alert-error', text: 'Invalid') }
-      
+
       describe "after visiting another page" do
         before { click_link "Home" }
         it { should_not have_selector('div.alert.alert-error') }
       end
     end
-    
+
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
       before { sign_in user }
@@ -40,7 +40,7 @@ describe "Authentication" do
       it { should have_link('Settings', href: edit_user_path(user)) }
       it { should have_link('Sign out', href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }
-      
+
       describe "followed by signout" do
         before { click_link "Sign out" }
         it { should have_link('Sign in') }
@@ -49,15 +49,15 @@ describe "Authentication" do
         it { should_not have_link('Settings', href: edit_user_path(user)) }
         it { should_not have_link('Sign out', href: signout_path) }
       end
-      
+
       describe "followed by visiting the home page" do
         before { click_link "Home" }
         it { should_not have_link('Sign up') }
-      end   
+      end
     end
   end
 
-  
+
   describe "authorization" do
 
     describe "for non-signed-in users" do
@@ -66,7 +66,7 @@ describe "Authentication" do
       describe "when attempting to visit a protected page" do
         before do
           visit edit_user_path(user)
-          sign_in user 
+          sign_in user
         end
 
         describe "after signing in" do
@@ -102,21 +102,33 @@ describe "Authentication" do
           before { visit users_path }
           it { should have_selector('title', text: 'Sign in') }
         end
+      end
 
+      describe "in the Microposts controller" do
+
+        describe "submitting to the create action" do
+          before { post microposts_path }
+          specify { response.should redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete micropost_path(FactoryGirl.create(:micropost)) }
+          specify { response.should redirect_to(signin_path) }
+        end
       end
     end
 
     describe "for signed in users" do
       describe "in the Users controller" do
-       let(:user) { FactoryGirl.create(:user) }
+        let(:user) { FactoryGirl.create(:user) }
         before { sign_in user }
         describe "when attempting to visit the sign up page" do
-         before { get new_user_path }
-         specify { response.should redirect_to root_url }
+          before { get new_user_path }
+          specify { response.should redirect_to root_url }
         end
         describe "when attempting to create a new user" do
-         before { post users_path }
-         specify { response.should redirect_to root_url }
+          before { post users_path }
+          specify { response.should redirect_to root_url }
         end
       end
     end
@@ -151,14 +163,14 @@ describe "Authentication" do
 
     describe "as an admin user" do
       let(:user) { FactoryGirl.create(:admin) }
-      before do 
-        sign_in user 
+      before do
+        sign_in user
       end
-      describe "sumbitting a self delete request" do 
+      describe "sumbitting a self delete request" do
         it "should not change the user count " do
           expect { delete user_path(user) }.to_not  change(User, :count)
         end
-     end
+      end
     end
   end
 end
