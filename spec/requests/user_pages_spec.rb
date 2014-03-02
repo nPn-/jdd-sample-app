@@ -151,4 +151,20 @@ describe "User pages" do
 
     end
   end
+
+  describe "micro post pagination" do
+
+    let(:user)  { FactoryGirl.create(:user) }
+    before { visit user_path(user) }
+    before(:all) { 50.times { FactoryGirl.create(:micropost, user: user, content: "FooBar") } }
+    after(:all)  {user.microposts.delete_all}
+
+    it { should have_selector('div.pagination') }
+
+    it "should list each post" do
+      user.microposts.paginate(page: 2).each do |post|
+        page.should have_selector('li', text: post.content)
+      end
+    end
+  end
 end
